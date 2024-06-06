@@ -1,8 +1,7 @@
 # @TEST-EXEC: zeek -r ${TRACES}/test.pcap frameworks/files/extract-all-files frameworks/files/hash-all-files %INPUT
 # @TEST-EXEC: for i in extract_files/*; do (printf "$i "; wc -c "$i" | awk '{print $1}'); done | sort >extracted.log
-# @TEST-EXEC: for i in files.log extracted.log; do cat $i | sed 's#\(extract-[^-]*\)-[^-]*-#\1-xxx-#g' >$i.tmp && mv $i.tmp $i; done
-#     Don't diff files.log for legacy Zeek 3.x as ordering of "analyzers" has changed
-# @TEST-EXEC: if zeek-version 40000; then btest-diff files.log; fi
+# @TEST-EXEC: for i in files.log extracted.log .stdout; do cat $i | sed 's#\(extract-[^-]*\)-[^-]*-#\1-xxx-#g' | sed 's#F[A-Za-z0-9]\{16,17\}#XXXXXXXXXXXXXXXXX#g' >$i.tmp && mv $i.tmp $i; done
+# @TEST-EXEC: btest-diff files.log
 # @TEST-EXEC: btest-diff .stdout
 # @TEST-EXEC: btest-diff extracted.log
 #
