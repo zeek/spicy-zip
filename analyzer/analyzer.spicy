@@ -171,8 +171,6 @@ type HeuristicContent = unit(inout file_: File){
 };
 
 type HeuristicDataDescriptor = unit(inout file_: File) {
-    %random-access;
-
     crc:                uint32;
     compressed_size:    uint32;
     uncompressed_size:  uint32;
