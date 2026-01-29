@@ -2,22 +2,22 @@
 # See https://pre-commit.com/hooks.html for more hooks
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
-  rev: v6.0.0
+  rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c  # frozen: v6.0.0
   hooks:
   - id: trailing-whitespace
   - id: end-of-file-fixer
   - id: check-yaml
   - id: check-added-large-files
 
-- repo: https://github.com/markdownlint/markdownlint
-  rev: v0.11.0
+- repo: https://github.com/igorshubovych/markdownlint-cli
+  rev: 76b3d32d3f4b965e1d6425253c59407420ae2c43  # frozen: v0.47.0
   hooks:
-  - id: markdownlint
+  - id: markdownlint-fix
 
 - repo: https://github.com/cheshirekow/cmake-format-precommit
-  rev: v0.6.13
+  rev: e2c2116d86a80e72e7146a06e68b7c228afc6319  # frozen: v0.6.13
   hooks:
   - id: cmake-format
   - id: cmake-lint
 
-exclude: '^tests/Baseline'
+exclude: '^tests/baseline'
